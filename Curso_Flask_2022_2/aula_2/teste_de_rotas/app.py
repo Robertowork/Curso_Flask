@@ -13,6 +13,6 @@ def ola_mundo():
 # Nova Rota Teste
 @app.route("/teste")
 @app.route("/teste/<carro_do_leite>")
-def funcao_teste(carro_do_leite):
-    return "Nova rota teste<br>variável:{}".format(carro_do_leite), 200
+def funcao_teste(carro_do_leite = ""):
+    return "Nova rota teste<br>variável: {}".format(carro_do_leite), 200
 app.run() 
