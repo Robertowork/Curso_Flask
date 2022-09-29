@@ -69,4 +69,3 @@ def dlt_uc():
     db.session.commit()
 
     return redirect(url_for("ucBp.uc_list"))
-    
