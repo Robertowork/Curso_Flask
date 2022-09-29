@@ -1,4 +1,4 @@
-from ..extensions import db
+from ..extencao import db
 
 class Uc(db.Model):
     __tablename__ = "ucs"
