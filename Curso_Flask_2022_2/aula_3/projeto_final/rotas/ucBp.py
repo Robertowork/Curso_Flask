@@ -1,7 +1,7 @@
 
 from flask import Blueprint, render_template, request, redirect, url_for
-from ..extensions import db
-from ..models.uc import Uc
+from ..extencao import db
+from ..modelos.uc import Uc
 from datetime import date, datetime
 
 
@@ -11,11 +11,11 @@ ucBp = Blueprint('ucBp', __name__)
 def uc_list():
 
     ucs_query = Uc.query.all()
-    return render_template('uc_list.html', ucs=ucs_query)
+    return render_template('listas_uc.html', ucs=ucs_query)
 
 @ucBp.route('/uc/create')
 def create_uc():
-    return render_template('uc_create.html')
+    return render_template('criar_uc.html')
 
 @ucBp.route('/uc/add', methods=["POST"])
 def add_uc():
@@ -34,7 +34,7 @@ def add_uc():
 @ucBp.route('/uc/update/<uc_id>')
 def update_uc(uc_id=0):
     uc_query = Uc.query.filter_by(id = uc_id).first()
-    return render_template('uc_update.html', uc=uc_query) 
+    return render_template('atualizacao_uc.html', uc=uc_query) 
 
 @ucBp.route('/uc/upd', methods=["POST"])
 def upd_uc():
@@ -58,7 +58,7 @@ def upd_uc():
 @ucBp.route('/uc/delete/<uc_id>')
 def delete_uc(uc_id=0):
     uc_query = Uc.query.filter_by(id = uc_id).first()
-    return render_template('uc_delete.html', uc=uc_query) 
+    return render_template('deletar_uc.html', uc=uc_query) 
 
 @ucBp.route('/uc/dlt', methods=["POST"])
 def dlt_uc():
@@ -69,3 +69,4 @@ def dlt_uc():
     db.session.commit()
 
     return redirect(url_for("ucBp.uc_list"))
+    
